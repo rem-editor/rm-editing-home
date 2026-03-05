@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="RM Editing — Thesis, dissertation, and manuscript editing for clarity, structure, and final polish." />
+  <title>RM Editing | Thesis • Dissertation • Manuscript Editing</title>
+
+  <style>
+    :root{
+      /* Brand-inspired palette (blue + gold, restrained) */
+      --bg0:#06080d;
+      --bg1:#0b1324;      /* deep midnight blue */
+      --card:rgba(10,14,22,.74);
+      --text:#eaf0fb;
+      --muted:#b9c6dd;
+      --soft:#8fa0bb;
+      --line:rgba(255,255,255,.10);
+      --gold:#d4af37;     /* tasteful gold */
+      --gold2:#e6cf86;    /* soft highlight */
+      --blue:#0f2a57;     /* deep blue accent */
+      --shadow: 0 18px 55px rgba(0,0,0,.55);
+      --radius: 18px;
+      --max: 980px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+
+    body{
+      margin:0;
+      font-family:var(--font);
+      font-size: 1.15rem;          /* ✅ +15% body text increase */
+      color:var(--text);
+      line-height:1.65;            /* ✅ improved reading rhythm */
+      letter-spacing:.15px;
+      background:
+        radial-gradient(1100px 700px at 18% 10%, rgba(212,175,55,.10), transparent 60%),
+        radial-gradient(950px 750px at 85% 30%, rgba(20,55,120,.14), transparent 60%),
+        radial-gradient(900px 900px at 45% 100%, rgba(255,255,255,.06), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; text-underline-offset:3px; }
+
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: clamp(22px, 4vw, 48px); /* ✅ slightly roomier */
+    }
+
+    header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:18px;
+      padding: 10px 0 22px;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      min-width: 0;
+    }
+
+    .logoRow{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .logoImg{
+      width: 120px;
+      height:auto;
+      display:block;
+      filter: drop-shadow(0 12px 28px rgba(0,0,0,.45));
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight:650;
+      letter-spacing:.65px;
+      text-transform:uppercase;
+      font-size:13px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .mark{
+      width:10px; height:10px;
+      border-radius:999px;
+      background: linear-gradient(135deg, var(--gold), rgba(212,175,55,.35));
+      box-shadow: 0 10px 30px rgba(212,175,55,.18);
+    }
+
+    h1{
+      margin:0;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height:1.05;
+      letter-spacing:-0.8px; /* ✅ micro-typography polish */
+    }
+
+    .sub{
+      margin:0;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: clamp(15px, 1.7vw, 18px);
+    }
+
+    /* ✅ Added trust signal */
+    .trust{
+      margin: 6px 0 0;
+      color: var(--soft);
+      font-size: 0.98rem;
+      max-width: 72ch;
+    }
+
+    .divider{
+      height:2px;
+      width:88px;
+      background: linear-gradient(90deg, var(--gold), rgba(212,175,55,.2));
+      border-radius: 2px;
+      margin: 10px 0 0;
+    }
+
+    .pillrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 12px;
+    }
+    .pill{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      padding: 7px 10px;
+      border-radius:999px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .cta{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:10px;
+      min-width: 260px;
+    }
+
+    /* ✅ FIXED: CTA pill always encompasses its text */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+
+      padding: 14px 18px; /* ✅ a little more room */
+      border-radius: 999px;
+
+      border: 1px solid rgba(212,175,55,.45);
+      background: rgba(212,175,55,.14);
+      color: var(--text);
+      font-weight: 650;
+
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+
+      width: auto;        /* ✅ don't force cramped full-width */
+      max-width: 100%;    /* ✅ still respects container */
+      flex-wrap: wrap;    /* ✅ can wrap non-email content if needed */
+      white-space: normal;/* ✅ prevents clipping */
+      line-height: 1.2;   /* ✅ tidy if it ever wraps */
+    }
+    .btn:hover{
+      background: rgba(212,175,55,.20);
+      text-decoration:none;
+    }
+
+    /* ✅ FIXED: helper line under CTA is readable */
+    .cta small{
+      color: var(--muted); /* ✅ brighter than soft */
+      font-size: 14px;
+      line-height: 1.45;
+      text-align:right;
+      max-width: 34ch;
+      text-shadow: 0 1px 10px rgba(0,0,0,.55); /* ✅ subtle contrast boost */
+    }
+
+    main{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 18px;
+      align-items:start;
+    }
+
+    @media (max-width: 900px){
+      header{ flex-direction:column; align-items:flex-start; }
+      .cta{ align-items:flex-start; min-width: unset; }
+      .btn{ width:auto; }
+      main{ grid-template-columns: 1fr; }
+      .cta small{ text-align:left; }
+    }
+
+    .card{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .card .inner{
+      padding: 24px; /* ✅ more breathing room */
+    }
+
+    .card h2{
+      margin:0 0 12px;
+      font-size: 20px;
+      letter-spacing:.2px; /* ✅ subtle heading polish */
+    }
+
+    .card p{
+      margin:0 0 14px;     /* ✅ improved paragraph spacing */
+      color: var(--muted);
+      max-width: 65ch;     /* ✅ line-length control */
+    }
+    .card p:last-child{ margin-bottom:0; }
+
+    .note{
+      margin-top:12px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(212,175,55,.22);
+      background: rgba(15,42,87,.20);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .note b{ color: var(--gold2); font-weight:650; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    @media (max-width: 560px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .tile{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .tile h3{
+      margin:0 0 6px;
+      font-size: 15px;
+      letter-spacing:.2px;
+      color: var(--text);
+    }
+    .tile p{
+      margin:0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: none;
+    }
+
+    .list{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .dot{
+      width:10px; height:10px;
+      margin-top: 7px;
+      border-radius: 999px;
+      background: rgba(212,175,55,.75);
+      box-shadow: 0 0 0 4px rgba(212,175,55,.12);
+      flex: 0 0 auto;
+    }
+    .li b{ display:block; font-size: 0.98rem; }
+    .li span{ display:block; color: var(--muted); font-size: 0.92rem; margin-top:2px; }
+
+    .contactLine{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin: 10px 0 0;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ✅ never break the email address */
+    .email{
+      white-space: nowrap;
+      word-break: normal;
+      overflow-wrap: normal;
+    }
+
+    .mono{ font-family: var(--mono); font-size: 12.5px; color: var(--soft); }
+
+    footer{
+      margin-top: 18px;
+      color: var(--soft);
+      font-size: 12.5px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      padding: 8px 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logoRow">
+          <!-- Put this image in your repo root with this exact filename -->
+          <img class="logoImg" src="REM Logo (Final).png" alt="RM Editing logo" />
+          <div class="kicker"><span class="mark" aria-hidden="true"></span> RM Editing</div>
+        </div>
+
+        <h1>Thesis • Dissertation • Manuscript Editing</h1>
+        <p class="sub">
+          Precision editing for long-form academic and professional writing — clarity, structure, and final polish
+          <span style="color:var(--gold2);">without changing your voice</span>.
+        </p>
+
+        <p class="trust">
+          Working with graduate researchers, faculty, and independent scholars across disciplines.
+        </p>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <div class="pillrow" aria-label="Services summary">
+          <div class="pill">Clarity &amp; flow</div>
+          <div class="pill">Argument structure</div>
+          <div class="pill">Line editing</div>
+          <div class="pill">Proofreading</div>
+          <div class="pill">Final submission polish</div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <a class="btn" href="mailto:rem@rm-editing.com?subject=Editing%20Inquiry%20(Thesis%2FDissertation%2FManuscript)">
+          Email: <span class="email">rem@rm-editing.com</span>
+        </a>
+        <small>Reply with your field, timeline, and page count. I’ll confirm fit and next steps.</small>
+      </div>
+    </header>
+
+    <main>
+      <section class="card">
+        <div class="inner">
+          <h2>What I help with</h2>
+          <p>
+            Strong research can be undermined by unclear phrasing, uneven structure, or sentences that don’t quite carry
+            the weight of the ideas. I help authors present their work with confidence — clean prose, coherent logic,
+            and a readable rhythm that supports the argument.
+          </p>
+
+          <div class="note">
+            <b>Academic-friendly editing:</b> tracked changes + a clean copy, with brief notes where structure or clarity can be strengthened.
+          </div>
+
+          <div class="grid">
+            <div class="tile">
+              <h3>Proofreading</h3>
+              <p>Grammar, punctuation, consistency, citations &amp; formatting alignment (per your style guide).</p>
+            </div>
+            <div class="tile">
+              <h3>Line editing</h3>
+              <p>Clarity, tone, flow, sentence-level refinement — keep your voice, remove friction.</p>
+            </div>
+            <div class="tile">
+              <h3>Structural clarity</h3>
+              <p>Argument flow, transitions, section coherence, redundancy reduction, stronger through-lines.</p>
+            </div>
+            <div class="tile">
+              <h3>Final submission polish</h3>
+              <p>Last-mile review for defense/submission: readability, consistency, and professional presentation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="card">
+        <div class="inner">
+          <h2>How it works</h2>
+          <div class="list">
+            <div class="li">
+              <div class="dot" aria-hidden="true"></div>
+              <div>
+                <b>1) Quick intake</b>
+                <span>Send your page count, timeline, field, and what you want most (proofread, line edit, structure).</span>
+              </div>
+            </div>
+            <div class="li">
+              <div class="dot" aria-hidden="true"></div>
+              <div>
+                <b>2) Scope &amp; quote</b>
+                <span>I confirm turnaround and provide a clear quote (optional sample edit upon request).</span>
+              </div>
+            </div>
+            <div class="li">
+              <div class="dot" aria-hidden="true"></div>
+              <div>
+                <b>3) Delivery</b>
+                <span>Tracked changes + clean copy, with concise notes and recommendations where useful.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contactLine" aria-label="Contact">
+            <span class="chip">Email: <a class="email" href="mailto:rem@rm-editing.com">rem@rm-editing.com</a></span>
+            <span class="chip">Phone: <a href="tel:+17703672327">(770) 367-2327</a></span>
+            <span class="chip">Web: <a href="https://rm-editing.com">rm-editing.com</a></span>
+          </div>
+
+          <p class="mono" style="margin:12px 0 0;">
+            New projects accepted weekly. Short-turnaround requests welcomed when feasible.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div>© <span id="y"></span> RM Editing. All rights reserved.</div>
+      <div class="mono">Built for speed, clarity, and calm.</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
